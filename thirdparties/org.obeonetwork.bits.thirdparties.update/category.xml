@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.apache.poi.feature" version="0.0.0">
+      <category name="ThirdParties"/>
+   </feature>   
+   <category-def name="ThirdParties" label="Third Parties Libraries">
+      <description>
+         Libraries re-packaged as OSGi bundles and Eclipse features.
+      </description>
+   </category-def>
+</site>
