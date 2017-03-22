@@ -1,0 +1,42 @@
+language: java
+env:
+  global:
+      - MAVEN_OPTS="-XX:MaxPermSize=512m -Xmx2048m -Xms1024m"  
+jdk:
+  - oraclejdk8
+sudo: false
+# TODO: Gross until Travis support setting maven version or upgrades to 3.3
+before_install:
+  - wget http://mirrors.ircam.fr/pub/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+  - tar zxvf apache-maven-3.3.9-bin.tar.gz
+  - chmod +x apache-maven-3.3.9/bin/mvn
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$PWD/apache-maven-3.3.9/bin:${PATH}
+  - hash -r
+before_script:
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$PWD/apache-maven-3.3.9/bin:${PATH}
+  - hash -r
+script:
+- mkdir -p thirdparties/org.obeonetwork.bits.thirdparties.update/target/repository/
+- touch thirdparties/org.obeonetwork.bits.thirdparties.update/update-site.txt
+- mvn clean package -e -Dgpg.skip=true
+- chmod a+x prepare-deploy-local-dir.sh
+- "./prepare-deploy-local-dir.sh $TRAVIS_BUILD_DIR/nightly"
+after_script:
+- chmod a+x travis-promote.sh
+- ./travis-promote.sh
+deploy:  
+  - provider: s3
+    access_key_id: AKIAI7GYGSUKTIBLAI6Q
+    secret_access_key:
+      secure: RXaePPsx+/QoMIpeOaRfxx0LY29Zi/SCDb2imWNFyAZ6Jr1CXZTwFgU+S+1GIPXTGNeKxc4ZfIl610EojVDCrUZTzB+sLjB6CqXvaXJRyXEiwCTt/zwiUqr5ubXRXCIaMO7Y2n1YGNlpMTsFqiLSEFJdWu318CXdMt2ryySCk8jYJwfjSwd2SbnxhsmS9lBNnfzAPkcTAAWCDtsDpHqlQb3/HRr1dFQERhDWS6xUeIG+RIICuL8lu6S8UW3B/2qky6ntSx/VO9FC/wMnWThxXr6djvGLSnChfWu/389U9WkjfuZhfnEu+pqgfsWl/DWBZyDdcTtO78HCQiTXwZGY2FT2UooKCcy6MIxPnQO9O0sIDeBDwHgSefjXsPIrDNVzW8Ffy3r/77GSstpAEsAAsiK01uiGlcAhMsnbw63zLso89sLiQb1gA7SyEUP8qr69DLoLAzh8g4feasTcoLoZc4boX8G676lqlgr1Jr/P8r7kc02gCv5e709+fbv/M7pm/ccCrQXFkT/KTObij+xOZOazMiJX9euaDJa9Qtxxb6J9Ei5y2EAfNb542VuNoESVIbp5dzcxwP/Ze8VkN8+SVfFa9ch+TSfHTHDn4afn6mKEkl/5Ed8QklR8pIGp7cCFhH+meq7S6xW6ao1KJG3rrQWFTphlD5psdZp1oF3wDCM=
+    bucket: obeo-networkaggregation-releases
+    local-dir: "${TRAVIS_BUILD_DIR}/nightly"
+    acl: public_read
+    skip_cleanup: true
+    region: eu-west-1
+    upload-dir: bits/${TRAVIS_BRANCH}
+    on:
+      all_branches: true
+      repo: ObeoNetwork/Bits
