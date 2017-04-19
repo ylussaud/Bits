@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Poi
 Bundle-SymbolicName: org.apache.poi
-Bundle-Version: 3.15.0.qualifier
+Bundle-Version: 3.16.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: Apache
 Export-Package: com.microsoft.schemas.office.excel,
