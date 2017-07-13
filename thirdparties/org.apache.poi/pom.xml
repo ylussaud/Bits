@@ -82,6 +82,15 @@
                 </artifactItem>
 
                 <artifactItem>
+                  <groupId>org.apache.commons</groupId>
+                  <artifactId>commons-collections4</artifactId>
+                  <version>4.1</version>
+                  <type>jar</type>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                </artifactItem>
+
+                <artifactItem>
                   <groupId>org.apache.xmlbeans</groupId>
                   <artifactId>xmlbeans</artifactId>
                   <version>${xmlbeans}</version>
