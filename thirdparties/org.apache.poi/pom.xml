@@ -4,8 +4,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <properties>
-    <poiVersion>3.16</poiVersion>
-    <xmlbeans>2.6.0</xmlbeans>
+    <poiVersion>3.17</poiVersion>
+    <xmlbeansVersion>2.6.0</xmlbeansVersion>
     <ooxmlSchemasVersion>1.3</ooxmlSchemasVersion>
   </properties>
 
@@ -93,7 +93,7 @@
                 <artifactItem>
                   <groupId>org.apache.xmlbeans</groupId>
                   <artifactId>xmlbeans</artifactId>
-                  <version>${xmlbeans}</version>
+                  <version>${xmlbeansVersion}</version>
                   <type>jar</type>
                   <overWrite>false</overWrite>
                   <outputDirectory>${project.build.outputDirectory}</outputDirectory>

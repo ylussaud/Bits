@@ -13,7 +13,7 @@
 <feature
       id="org.apache.poi.feature"
       label="Apache POI"
-      version="3.16.0.qualifier"
+      version="3.17.0.qualifier"
       provider-name="Apache">
 
    <description url="https://poi.apache.org/">
