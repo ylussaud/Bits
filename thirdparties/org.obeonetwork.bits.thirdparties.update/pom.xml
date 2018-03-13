@@ -17,11 +17,11 @@
 		<groupId>org.obeonetwork.bits</groupId>
 		<artifactId>org.obeonetwork.bits.parent</artifactId>
 		<relativePath>../..</relativePath>
-		<version>0.10.0-SNAPSHOT</version>
+		<version>0.11.0-SNAPSHOT</version>
 	</parent>
   <groupId>org.obeonetwork.bits</groupId>
   <artifactId>org.obeonetwork.bits.thirdparties.update</artifactId>
-  <version>0.10.0-SNAPSHOT</version>
+  <version>0.11.0-SNAPSHOT</version>
   <packaging>eclipse-repository</packaging>
   
   

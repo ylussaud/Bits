@@ -16,7 +16,7 @@
 	</prerequisites>
 	<groupId>org.obeonetwork.bits</groupId>
 	<artifactId>org.obeonetwork.bits.parent</artifactId>
-	<version>0.10.0-SNAPSHOT</version>
+	<version>0.11.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>        
